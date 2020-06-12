@@ -14,7 +14,12 @@ def chapter(url, name):
     '''
     global file
     file.write('\n********************%s********************\n' % name)
-    txt = requests_gethtml(url).find('div', id='content').get_text()
+    try:
+        txt = requests_gethtml(url).find('div', id='content').get_text()
+    except AttributeError:
+        pass
+    finally:
+        pass
     file.write(txt)
 
 
@@ -50,4 +55,8 @@ def books():
     for book_item in books_list:
         book(book_item.a['href'], book_item.get_text().replace('/','_作者：'))
 
-books()
+
+
+
+if __name__=='__main__':
+    books()

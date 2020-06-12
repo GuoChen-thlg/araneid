@@ -4,7 +4,7 @@
 import pymysql
 
 # 打开数据库连接
-db = pymysql.connect("localhost", "root", "", "python")
+db = pymysql.connect("localhost", "root", "123456", "python")
 
 # 使用 cursor() 方法创建一个游标对象 cursor
 cursor = db.cursor()
@@ -13,8 +13,7 @@ cursor = db.cursor()
 cursor.execute("SELECT `name` FROM `text`")
 
 # 使用 fetchone() 方法获取单条数据.
-data = cursor.fetchone()
-
+data = cursor.fetchall()
 print(data)
 
 # 关闭数据库连接

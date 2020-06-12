@@ -4,7 +4,7 @@ import requests  # 请求
 from bs4 import BeautifulSoup  # 解析 html
 from fake_useragent import UserAgent  # 代理
 from requests.exceptions import ConnectionError, Timeout, HTTPError
-
+from retrying import retry
 
 def get_ua():
     '''
@@ -21,7 +21,7 @@ def Beautiful_Soup(text):
     '''
     return BeautifulSoup(text, 'html.parser')
 
-
+# @retry()
 def requests_gethtml(url):
     """
     返回 HTML 解析对象
@@ -43,8 +43,9 @@ def requests_gethtml(url):
     except Timeout:
         print(url+'：请求超时！')
     except ConnectionError:
-        print(url+'：建立连接失败！')
+        print(url + '：建立连接失败！')
 
 
-# https://www.baidu.com/
-# requests_gethtml(url='https://www.baidu.com')
+
+
+

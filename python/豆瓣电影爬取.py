@@ -6,9 +6,4 @@ url = 'https://movie.douban.com/j/search_subjects?type=movie&tag=%E7%83%AD%E9%97
 header = { "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36"
 }
 
-request = requests.Session().get(url, headers=header)
 
-content = BeautifulSoup(request.text, features='lxml').find_all('div', class_='list-wp')
-
-
-print(content)
